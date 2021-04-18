@@ -13,11 +13,47 @@ public class Delimiters
 
 	public ArrayList<String> getDelimitersList(String[] tokens)
 	{
-		return null;
+    //store delimiters
+    ArrayList<String> delims = new ArrayList<String>();
+    //loop through tokens list
+    for(int x = 0; x < tokens.length; x++) 
+    {
+      //check if something is a delimiter
+      if(tokens[x].equals(openDel)||tokens[x].equals(closedDel)) 
+      {
+        //add delimiters to list
+        list.add(tokens[x]);
+      }
+    }
+    //return list with only delimiters
+		return delims;
 	}
 
 	public boolean isBalanced(ArrayList<String> delimiters)
 	{ 
-		return false;
+    //store how many open or closed delimiters
+    int countOpen = 0;
+    int countClosed = 0;
+    //get Arraylist for tokens
+    ArrayList<String> delims = list.getDelimitersList(tokens);
+    //loop through list
+    for(int x = 0; x < delims.size(); x++) 
+    {
+      //count open and closed lists
+      if(delims.get(x).equals(openDel))
+      {
+        countOpen++;
+      }
+      if(delims.get(x).equals(closeDel))
+      {
+        countClosed++;
+      }
+    }
+    //return true or false if the amount is equal.
+    if(countOpen == countClosed) 
+    {
+      return true;
+    }
+    return false; 
 	}
 }
